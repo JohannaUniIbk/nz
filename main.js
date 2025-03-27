@@ -13,14 +13,14 @@ let stop = {
 }
 const STOPS = [
     {
-        
+
         nr: 1,
         title: "Cape Reinga",
         user: "vintiyannick",
         lat: -34.423889,
         lng: 172.6775,
         zoom: 13,
-        
+
     },
     {
         nr: 2,
@@ -212,13 +212,13 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-    //loop für Etappen
-    for(let i=0; i<STOPS.length; i++) {
-        console.log(STOPS[i]);
-        //MArker zeichnen
-        let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
+//loop für Etappen
+for (let i = 0; i < STOPS.length; i++) {
+    console.log(STOPS[i]);
+    //MArker zeichnen
+    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
     //Popup definieren 
-marker.bindPopup(`
+    marker.bindPopup(`
     <h2>${STOPS[i].title}</h2>
     <ul>
         <li>Geogr. Breite: ${STOPS[i].lat.toFixed(5)}° </li>
@@ -227,26 +227,33 @@ marker.bindPopup(`
   
 `);
 
-//auf eigene Etappe blicken und PopUp öffnen
-if(STOPS[i].user=="johannauniibk"){
-    console.log(STOPS[i].user,"meine Etappe:-)");
-    map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom);
-    marker.openPopup();
+    //auf eigene Etappe blicken und PopUp öffnen
+    if (STOPS[i].user == "johannauniibk") {
+        console.log(STOPS[i].user, "meine Etappe:-)");
+        map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom);
+        marker.openPopup();
+    }
+    //Pulldown Menü befüllen
+    let option = document.createElement("option");
+    option.value = STOPS[i].user;
+    option.text = STOPS[i].title;
+
+    if (STOPS[i].user == "johannauniibk") {
+        option.selected = true;
+    }
+    document.querySelector("#pulldown select").appendChild(option);
+
 }
-//Pulldown Menü befüllen
-let option = document.createElement("option");
-option.value = STOPS[i].user;
-option.text = STOPS[i].title;
 
-if (STOPS[i].user == "johannauniibk"){
-    option.selected = true;
-}
-document.querySelector("#pulldown select").appendChild(option);
-
+//auf Änerungen beim Pulldown reagieren
+document.querySelector("#pulldown select").onchange = function(evt) {
+let url = `https://${evt.target.value}.github.io/nz`;
+//console.log(evt.target.value);
+//console.log(url);
+window.location = url;
 }
 
 
-    
 
 
 
