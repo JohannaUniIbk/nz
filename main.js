@@ -82,7 +82,7 @@ const STOPS = [
         nr: 9,
         title: "Wellington",
         user: "cs4151",
-        lat: "-41.2875",
+        lat: -41.2875,
         lng: 174.776111,
         zoom: 14,
     },
@@ -204,7 +204,7 @@ console.log(STOPS[0]);
 console.log(STOPS[0].title);
 
 //Karte initialisieren
-let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
+let map = L.map('map');
 
 //Hintergrundkarte definieren
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -217,17 +217,26 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         console.log(STOPS[i]);
         //MArker zeichnen
         let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
-    }
+    //Popup definieren 
+marker.bindPopup(`
+    <h2>${STOPS[i].title}</h2>
+    <ul>
+        <li>Geogr. Breite: ${STOPS[i].lat.toFixed(5)}° </li>
+        <li>Geogr. Länge: ${STOPS[i].lng.toFixed(5)}°</li>
+    </ul>
+  
+`);
+
+//auf eigene Etappe blicken und PopUp öffnen
+if(STOPS[i].user=="johannauniibk"){
+    console.log(STOPS[i].user,"meine Etappe:-)");
+    map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom);
+    marker.openPopup();
+}
+}
+
 
     
 
 
-//Popup definieren und öffnen
-marker.bindPopup(`
-            <h2>${stop.title}</h2>
-            <ul>
-                <li>Geogr. Breite: ${stop.lat.toFixed(5)}° </li>
-                <li>Geogr. Länge: ${stop.lng.toFixed(5)}°</li>
-            </ul>
-          
-        `).openPopup();
+
