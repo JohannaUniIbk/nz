@@ -233,6 +233,16 @@ if(STOPS[i].user=="johannauniibk"){
     map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom);
     marker.openPopup();
 }
+//Pulldown Menü befüllen
+let option = document.createElement("option");
+option.value = STOPS[i].user;
+option.text = STOPS[i].title;
+
+if (STOPS[i].user == "johannauniibk"){
+    option.selected = true;
+}
+document.querySelector("#pulldown select").appendChild(option);
+
 }
 
 
