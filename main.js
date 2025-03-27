@@ -27,7 +27,7 @@ const STOPS = [
         title: "Bay of Islands",
         user: "Ellinnaa",
         lat: -35.183333,
-        long: 174.166667,
+        lng: 174.166667,
         zoom: 11,
     },
     {
@@ -41,7 +41,7 @@ const STOPS = [
     {
         nr: 4,
         title: "Cormandel Peninsula",
-        usr: "Gregorysprenger2001",
+        user: "Gregorysprenger2001",
         lat: -37.882778,
         lng: 175.636667,
         zoom: 11,
@@ -124,7 +124,7 @@ const STOPS = [
         user: "lizzie2911",
         lat: -44.7,
         lng: 169.15,
-        zoom: zoom,
+        zoom: 13,
     },
     {
         nr: 17,
