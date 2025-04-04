@@ -253,7 +253,10 @@ let url = `https://${evt.target.value}.github.io/nz`;
 window.location = url;
 }
 
-
+//Maßstab hinzufügen
+L.control.scale({
+    imperial: false,
+}).addTo(map);
 
 
 
