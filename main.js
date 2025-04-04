@@ -258,5 +258,11 @@ L.control.scale({
     imperial: false,
 }).addTo(map);
 
+//Layercontrol
+L.control.layers({
+
+}, {
+
+}).addTo(map);
 
 
