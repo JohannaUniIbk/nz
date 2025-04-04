@@ -258,9 +258,12 @@ L.control.scale({
     imperial: false,
 }).addTo(map);
 
+
 //Layercontrol
 L.control.layers({
-
+"OpenStreetMap" : L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map),
+"OpenTopoMap" : L.tileLayer.provider('OpenTopoMap'),
+"Esri WorldImagery": L.tileLayer.provider('Esri.WorldImagery'),
 }, {
 
 }).addTo(map);
